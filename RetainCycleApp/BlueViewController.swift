@@ -13,9 +13,11 @@ class BlueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(forName: PurpleViewController.NotificationSomething, object: nil, queue: nil) { (notification) in
+        NotificationCenter.default.addObserver(forName: PurpleViewController.NotificationSomething, object: nil, queue: nil) { [weak self] (notification) in
+            guard let strongSelf = self else { return }
+
             DispatchQueue.main.async {
-                self.navigationController?.popViewController(animated: true)
+                strongSelf.navigationController?.popViewController(animated: true)
             }
         }
     }

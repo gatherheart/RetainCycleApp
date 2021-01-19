@@ -31,8 +31,8 @@ class MenuViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            var robot1 : Robot? = Robot()
-            var robot2 : Robot? = Robot()
+            weak var robot1 : Robot? = Robot()
+            weak var robot2 : Robot? = Robot()
 
             robot1?.name = "JK"
             robot1?.nemesis = robot2

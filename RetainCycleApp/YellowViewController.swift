@@ -16,10 +16,12 @@ class YellowViewController: UIViewController {
         super.viewDidLoad()
 
         scrollTimerSource.schedule(deadline: DispatchTime.now(), repeating: .milliseconds(1000))
-        scrollTimerSource.setEventHandler(handler: {
-                var frame = self.eventButton.frame
-                frame = CGRect(x: frame.origin.x, y: frame.origin.y + 10, width: frame.size.width, height: frame.size.height)
-                self.eventButton.frame = frame
+        scrollTimerSource.setEventHandler(handler:  { [weak self] in
+            guard let strongSelf = self else { return }
+
+            var frame = strongSelf.eventButton.frame
+            frame = CGRect(x: frame.origin.x, y: frame.origin.y + 10, width: frame.size.width, height: frame.size.height)
+            strongSelf.eventButton.frame = frame
         })
         scrollTimerSource.activate()
     }

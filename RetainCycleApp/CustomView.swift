@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol  CustomDelegate {
+protocol  CustomDelegate: class {
     func foo(_ value: Int)
 }
 
@@ -21,7 +21,7 @@ class CustomView: UIView {
         }
     }
     
-    var delegate : CustomDelegate? = nil
+    weak var delegate : CustomDelegate?
 
     override func layoutSubviews() {
         super.layoutSubviews()
